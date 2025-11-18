@@ -1,12 +1,16 @@
 ---
+import { fetchAnnouncement } from "../lib/strapi";
 
+const announcement = await fetchAnnouncement();
 ---
 
 <div
   class="bg-linear-to-r/shorter from-[#9141EC] via-[#A7594C] via-60% to-[#D7C700] flex flex-col md:flex-row justify-center items-center py-2 md:py-4 px-4 md:px-12 lg:px-24 mx-auto gap-2 md:gap-0 shadow-xs"
 >
   <h3 class="text-sm md:text-4xl text-white font-bold opacity-100 text-center">
-    SEASON <span>10</span> STARTS <span>Dec. 2nd</span>, Sign up now!
+    SEASON <span>{announcement.seasonNumber}</span> Starts <span
+      >{announcement.seasonStartDate}</span
+    >, Sign up now!
   </h3>
   <a
     href=""

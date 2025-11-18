@@ -1,5 +1,6 @@
 ---
 import { drivers } from "./DriverCards.astro";
+import { strapiUrl } from "../lib/strapi";
 ---
 
 <div class="col-span-1 mx-auto transition-all duration-300">
@@ -8,13 +9,13 @@ import { drivers } from "./DriverCards.astro";
     class="flex justify-center items-center flex-wrap gap-6 p-8"
   >
     {
-      drivers.map((driver, index) => (
+      drivers.map((driver: any, index: any) => (
         <button
-          data-car-img={driver.carImgUrl}
+          data-car-img={`${strapiUrl}${driver.driverImg.url}`}
           data-car-number={driver.carNumber}
-          data-driver-name={driver.name}
+          data-driver-name={driver.driverName}
           data-nationality={driver.nationality}
-          data-flag={driver.natImgUrl}
+          data-flag={`${strapiUrl}${driver.countryFlag.url}`}
           data-index={index}
           class={`driver-btn flex justify-center items-center bg-linear-135 from-yellow-500/50 to-purple-900 border border-purple-950 font-semibold text-2xl w-20 aspect-square rounded-full shadow-lg overflow-hidden hover:scale-105 hover:bg-yellow-500 transform transition duration-300 ${index === 0 ? "ring-2 ring-purple-600 bg-yellow-500" : ""}`}
         >

@@ -1,133 +1,8 @@
 ---
-interface Driver {
-  name: string;
-  carNumber: number | string;
-  nationality: string;
-  natImgUrl?: string;
-  carImgUrl: string;
-}
+import { fetchDrivers } from "../lib/strapi";
+import { strapiUrl } from "../lib/strapi";
 
-export const drivers: Driver[] = [
-  {
-    name: "Jeremy Cubbage",
-    carNumber: 33,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-756.png",
-  },
-  {
-    name: "Andrew Casey",
-    carNumber: 406,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-406.png",
-  },
-  {
-    name: "Zach Schneider",
-    carNumber: 15,
-    nationality: "Canada",
-    natImgUrl: "/src/assets/flags/Canada.png",
-    carImgUrl: "/src/assets/cars/car-15.png",
-  },
-  {
-    name: "Nico Menendez",
-    carNumber: 756,
-    nationality: "Argentina",
-    natImgUrl: "/src/assets/flags/Argentina.png",
-    carImgUrl: "/src/assets/cars/car-756.png",
-  },
-  {
-    name: "Adam Turaj",
-    carNumber: 6,
-    nationality: "Canada",
-    natImgUrl: "/src/assets/flags/Canada.png",
-    carImgUrl: "/src/assets/cars/car-6.png",
-  },
-  {
-    name: "Casey Swanseger",
-    carNumber: 84,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-84.png",
-  },
-  {
-    name: "Casey Swanseger",
-    carNumber: 84,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-84.png",
-  },
-  {
-    name: "Casey Swanseger",
-    carNumber: 84,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-84.png",
-  },
-  {
-    name: "Casey Swanseger",
-    carNumber: 84,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-84.png",
-  },
-  {
-    name: "Casey Swanseger",
-    carNumber: 84,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-84.png",
-  },
-  {
-    name: "Casey Swanseger",
-    carNumber: 84,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-84.png",
-  },
-  {
-    name: "Casey Swanseger",
-    carNumber: 84,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-84.png",
-  },
-  {
-    name: "Casey Swanseger",
-    carNumber: 84,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-84.png",
-  },
-  {
-    name: "Casey Swanseger",
-    carNumber: 84,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-84.png",
-  },
-  {
-    name: "Casey Swanseger",
-    carNumber: 84,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-84.png",
-  },
-  {
-    name: "Casey Swanseger",
-    carNumber: 84,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-84.png",
-  },
-  {
-    name: "Casey Swanseger",
-    carNumber: 84,
-    nationality: "United States",
-    natImgUrl: "/src/assets/flags/United States.png",
-    carImgUrl: "/src/assets/cars/car-84.png",
-  },
-];
+export const drivers = await fetchDrivers();
 ---
 
 <div
@@ -136,18 +11,18 @@ export const drivers: Driver[] = [
 >
   <img
     id="car-image"
-    src={drivers[0].carImgUrl}
+    src={`${strapiUrl}/${drivers[0].driverImg.url}`}
     alt={`Car #${drivers[0].carNumber}`}
     class="w-full md:w-auto md:scale-115 h-auto rounded-lg transition-opacity duration-300"
   />
   <h4
     class="text-2xl md:text-3xl text-white transition-opacity duration-300 mt-4 md:mt-6 font-bold"
   >
-    {drivers[0].name}
+    {drivers[0].driverName}
   </h4>
   <small class="text-gray-300 transition-opacity duration-300 mt-2 text-base"
     ><img
-      src={drivers[0].natImgUrl}
+      src={`${strapiUrl}/${drivers[0].countryFlag.url}`}
       alt={drivers[0].nationality}
       class="inline w-6 h-4 mr-2"
     />{drivers[0].nationality}</small
